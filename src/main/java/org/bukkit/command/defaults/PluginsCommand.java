@@ -12,7 +12,7 @@ public class PluginsCommand extends BukkitCommand {
         super(name);
         this.description = "Gets a list of plugins running on the server";
         this.usageMessage = "/plugins";
-        this.setPermission("bukkit.command.plugins");
+        this.setPermission("spigot.info");
         this.setAliases(Arrays.asList("pl"));
     }
 

@@ -34,7 +34,7 @@ public class VersionCommand extends BukkitCommand {
 
         this.description = "Gets the version of this server including any plugins in use";
         this.usageMessage = "/version [plugin name]";
-        this.setPermission("bukkit.command.version");
+        this.setPermission("spigot.info");
         this.setAliases(Arrays.asList("ver", "about"));
     }
 
