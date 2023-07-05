@@ -39,7 +39,6 @@ import org.bukkit.plugin.PluginLoader;
 import org.bukkit.plugin.RegisteredListener;
 import org.bukkit.plugin.TimedRegisteredListener;
 import org.bukkit.plugin.UnknownDependencyException;
-import org.checkerframework.checker.units.qual.C;
 import org.spigotmc.CustomTimingsHandler; // Spigot
 import org.yaml.snakeyaml.error.YAMLException;
 

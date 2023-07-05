@@ -1,6 +1,5 @@
 package org.bukkit.command.defaults;
 
-import com.sun.media.jfxmediaimpl.platform.Platform;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -19,7 +18,7 @@ public class PingCommand extends BukkitCommand {
 
     @Override
     public boolean execute(CommandSender sender, String commandLabel, String[] args) {
-        if(sender instanceof Player){
+        if(!(sender instanceof Player)){
             sender.sendMessage("Somente players podem executar este comando.");
             return false;
         }

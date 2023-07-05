@@ -12,8 +12,8 @@
     <description>An enhanced plugin API for Minecraft servers.</description>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -61,7 +61,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>31.1-jre</version>
+            <version>17.0</version>
             <scope>compile</scope>
         </dependency>
         <!-- bundled with Minecraft, should be kept in sync -->
@@ -93,12 +93,6 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.28</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>io.github.rysefoxx.inventory</groupId>
-            <artifactId>RyseInventory-Plugin</artifactId>
-            <version>1.6.4</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
