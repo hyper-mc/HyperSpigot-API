@@ -1,6 +1,6 @@
 package org.bukkit.command.api.paramter.impl;
 
-import me.gleeming.command.duration.Duration;
+import org.bukkit.command.api.duration.Duration;
 import org.bukkit.command.api.paramter.Processor;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
