@@ -39,6 +39,7 @@ import org.bukkit.plugin.PluginLoader;
 import org.bukkit.plugin.RegisteredListener;
 import org.bukkit.plugin.TimedRegisteredListener;
 import org.bukkit.plugin.UnknownDependencyException;
+import org.checkerframework.checker.units.qual.C;
 import org.spigotmc.CustomTimingsHandler; // Spigot
 import org.yaml.snakeyaml.error.YAMLException;
 
@@ -61,6 +62,16 @@ public final class JavaPluginLoader implements PluginLoader {
     public JavaPluginLoader(Server instance) {
         Validate.notNull(instance, "Server cannot be null");
         server = instance;
+    }
+
+    public Plugin loadPlugin(Class viaClass, String name){
+        try {
+            Class<? extends JavaPlugin> pluginClass = viaClass.asSubclass(JavaPlugin.class);
+            return pluginClass.newInstance();
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public Plugin loadPlugin(final File file) throws InvalidPluginException {

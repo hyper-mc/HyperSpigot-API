@@ -16,12 +16,12 @@ import org.bukkit.plugin.PluginDescriptionFile;
  * A ClassLoader for plugins, to allow shared classes across multiple plugins
  */
 final class PluginClassLoader extends URLClassLoader {
-    private final JavaPluginLoader loader;
-    private final Map<String, Class<?>> classes = new java.util.concurrent.ConcurrentHashMap<String, Class<?>>(); // Spigot
-    private final PluginDescriptionFile description;
-    private final File dataFolder;
-    private final File file;
-    final JavaPlugin plugin;
+    private JavaPluginLoader loader = null;
+    private Map<String, Class<?>> classes = new java.util.concurrent.ConcurrentHashMap<String, Class<?>>(); // Spigot
+    private PluginDescriptionFile description = null;
+    private File dataFolder = null;
+    private File file = null;
+    public JavaPlugin plugin = null;
     private JavaPlugin pluginInit;
     private IllegalStateException pluginState;
 
