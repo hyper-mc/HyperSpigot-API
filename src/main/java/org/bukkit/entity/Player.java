@@ -16,6 +16,7 @@ import org.bukkit.Statistic;
 import org.bukkit.WeatherType;
 import org.bukkit.command.CommandSender;
 import org.bukkit.conversations.Conversable;
+import org.bukkit.inventory.ItemStack;
 import org.bukkit.map.MapView;
 import org.bukkit.plugin.messaging.PluginMessageRecipient;
 import org.bukkit.scoreboard.Scoreboard;
@@ -1075,7 +1076,26 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     @Deprecated
     public void resetTitle();
 
+    /**
+     * Retorna o ping do player
+     *
+     * @return ping em MS
+     */
     public int getPing();
+
+    /**
+     * Envia uma mensagem via ActionBar
+     *
+     * @param message Mensagem sem &
+     */
+    public void sendActionBar(String message);
+
+    /**
+     * Retorna a cabeça do player
+     *
+     * @return ItemStack
+     */
+    public ItemStack getItemHead();
 
     // Spigot start
     public class Spigot extends Entity.Spigot
