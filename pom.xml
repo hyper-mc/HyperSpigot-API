@@ -12,8 +12,8 @@
     <description>An enhanced plugin API for Minecraft servers.</description>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -105,18 +105,19 @@
             <groupId>com.github.SrBalbucio</groupId>
             <artifactId>SQLAPI</artifactId>
             <version>v1.1.3</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.github.SrBalbucio</groupId>
             <artifactId>ResponsiveScheduler</artifactId>
             <version>v1.0.2</version>
-            <scope>provided</scope>
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>com.github.SrBalbucio</groupId>
             <artifactId>PaginatedList</artifactId>
             <version>v1.0</version>
+            <scope>compile</scope>
         </dependency>
 
         <!-- testing -->
@@ -141,14 +142,6 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <!-- versions after this appear to be broken -->
                 <version>3.1</version>
-                <configuration>
-                    <!-- we use the Eclipse compiler as it doesn't need a JDK -->
-                    <compilerId>eclipse</compilerId>
-                    <!-- source and target are ignored if this isn't true -->
-                    <optimize>true</optimize>
-                    <source>8</source>
-                    <target>8</target>
-                </configuration>
                 <dependencies>
                     <!-- we need our custom version as it fixes some bugs on case sensitive file systems -->
                     <dependency>
@@ -162,14 +155,6 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>animal-sniffer-maven-plugin</artifactId>
                 <version>1.13</version>
-                <executions>
-                    <execution>
-                        <phase>process-classes</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <configuration>
                     <signature>
                         <groupId>org.codehaus.mojo.signature</groupId>
