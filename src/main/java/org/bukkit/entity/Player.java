@@ -1,6 +1,7 @@
 package org.bukkit.entity;
 
 import java.net.InetSocketAddress;
+import java.util.Map;
 
 import org.bukkit.Achievement;
 import org.bukkit.ChatColor;
@@ -1096,6 +1097,11 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @return ItemStack
      */
     public ItemStack getItemHead();
+
+    public Object getData(String key);
+    public void setData(String key, Object obj);
+    public Map<String, Object> getPlayerData();
+    public void deleteData(String key);
 
     // Spigot start
     public class Spigot extends Entity.Spigot
