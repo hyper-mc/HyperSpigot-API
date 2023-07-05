@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.*;
 import java.util.logging.Logger;
 
+import balbucio.responsivescheduler.ResponsiveScheduler;
+import balbucio.sqlapi.sqlite.SQLiteInstance;
 import com.google.common.reflect.ClassPath;
 import lombok.SneakyThrows;
 import org.bukkit.Warning.WarningState;
@@ -431,6 +433,7 @@ public final class Bukkit {
      *
      * @return a scheduling service for this server
      */
+    @Deprecated
     public static BukkitScheduler getScheduler() {
         return server.getScheduler();
     }
@@ -1192,6 +1195,14 @@ public final class Bukkit {
                     try { ParamProcessor.createProcessor((Processor<?>) info.load().newInstance());
                     } catch(Exception exception) { exception.printStackTrace(); }
                 });
+    }
+
+    public static SQLiteInstance getSQLite(){
+        return server.getSQLiteInstance();
+    }
+
+    public static ResponsiveScheduler getRScheduler(){
+        return server.getResponsiveScheduler();
     }
 
     public static Server.Spigot spigot()

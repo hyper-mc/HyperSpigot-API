@@ -12,6 +12,8 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.logging.Logger;
 
+import balbucio.responsivescheduler.ResponsiveScheduler;
+import balbucio.sqlapi.sqlite.SQLiteInstance;
 import org.bukkit.Warning.WarningState;
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
@@ -957,6 +959,9 @@ public interface Server extends PluginMessageRecipient {
             throw new UnsupportedOperationException("Not supported yet.");
         }
     }
+
+    SQLiteInstance getSQLiteInstance();
+    ResponsiveScheduler getResponsiveScheduler();
 
     Spigot spigot();
 }
