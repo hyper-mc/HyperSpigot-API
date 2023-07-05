@@ -1075,6 +1075,8 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     @Deprecated
     public void resetTitle();
 
+    public int getPing();
+
     // Spigot start
     public class Spigot extends Entity.Spigot
     {
