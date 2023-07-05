@@ -3,20 +3,22 @@ package org.bukkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.logging.Logger;
 
+import com.google.common.reflect.ClassPath;
+import lombok.SneakyThrows;
 import org.bukkit.Warning.WarningState;
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.PluginCommand;
+import org.bukkit.command.api.Command;
+import org.bukkit.command.api.CommandHandler;
+import org.bukkit.command.api.help.*;
+import org.bukkit.command.api.node.CommandNode;
+import org.bukkit.command.api.paramter.ParamProcessor;
+import org.bukkit.command.api.paramter.Processor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
@@ -28,6 +30,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.Recipe;
 import org.bukkit.map.MapView;
 import org.bukkit.permissions.Permissible;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.ServicesManager;
 import org.bukkit.plugin.messaging.Messenger;
@@ -1129,6 +1132,66 @@ public final class Bukkit {
     @Deprecated
     public static UnsafeValues getUnsafe() {
         return server.getUnsafe();
+    }
+
+    /**
+     * Registers commands based off a file path
+     * @param path Path
+     */
+    @SneakyThrows
+    public static void registerCommands(String path, Plugin plugin) {
+        ClassPath.from(plugin.getClass().getClassLoader()).getAllClasses().stream()
+                .filter(info -> info.getPackageName().startsWith(path))
+                .forEach(info -> registerCommands(info.load(), plugin));
+    }
+
+    /**
+     * Registers the commands in the class
+     * @param commandClass Class
+     */
+    @SneakyThrows
+    public static void registerCommands(Class<?> commandClass, Plugin plugin) {
+        CommandHandler.setPlugin(plugin);
+        registerCommands(commandClass.newInstance());
+    }
+
+    /**
+     * Registers the commands in the class
+     * @param commandClass Class
+     */
+    public static void registerCommands(Object commandClass) {
+        Arrays.stream(commandClass.getClass().getDeclaredMethods()).forEach(method -> {
+            Command command = method.getAnnotation(Command.class);
+            if(command == null) return;
+
+            new CommandNode(commandClass, method, command);
+        });
+
+        Arrays.stream(commandClass.getClass().getDeclaredMethods()).forEach(method -> {
+            Help help = method.getAnnotation(Help.class);
+            if(help == null) return;
+
+            HelpNode helpNode = new HelpNode(commandClass, help.names(), help.permission(), method);
+            CommandNode.getNodes().forEach(node -> node.getNames().forEach(name -> Arrays.stream(help.names())
+                    .map(String::toLowerCase)
+                    .filter(helpName -> name.toLowerCase().startsWith(helpName))
+                    .forEach(helpName -> node.getHelpNodes().add(helpNode))));
+        });
+    }
+
+    /**
+     * Registers processors based off a file path
+     * @param path Path
+     */
+    @SneakyThrows
+    public static void registerProcessors(String path, Plugin plugin) {
+        ClassPath.from(plugin.getClass().getClassLoader()).getAllClasses().stream()
+                .filter(info -> info.getPackageName().startsWith(path))
+                .filter(info -> info.load().getSuperclass().equals(Processor.class))
+                .forEach(info -> {
+                    try { ParamProcessor.createProcessor((Processor<?>) info.load().newInstance());
+                    } catch(Exception exception) { exception.printStackTrace(); }
+                });
     }
 
     public static Server.Spigot spigot()
