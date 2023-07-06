@@ -1097,7 +1097,6 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @return ItemStack
      */
     public ItemStack getItemHead();
-
     public Object getData(String key);
     public void setData(String key, Object obj);
     public Map<String, Object> getPlayerData();

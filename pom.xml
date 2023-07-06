@@ -2,13 +2,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>net.hyper.mc</groupId>
-    <artifactId>hyperspigot-api</artifactId>
-    <version>1.0.1-MC1.8.8</version>
-    <packaging>jar</packaging>
+    <parent>
+        <artifactId>HyperSpigot</artifactId>
+        <groupId>net.hyper.mc</groupId>
+        <version>1.0.1-MC1.8.8</version>
+    </parent>
 
+    <artifactId>HyperSpigot-API</artifactId>
     <name>HyperSpigot-API</name>
-    <url>http://www.spigotmc.org/</url>
     <description>An enhanced plugin API for Minecraft servers.</description>
 
     <properties>
@@ -112,6 +113,11 @@
             <artifactId>PaginatedList</artifactId>
             <version>v1.0</version>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.hyper-mc</groupId>
+            <artifactId>HyperMessageBroker-API</artifactId>
+            <version>1.0</version>
         </dependency>
 
         <!-- testing -->
