@@ -8,5 +8,6 @@ public enum BungeeAction {
     SERVER_LIST,
     UUID,
     SERVER_IP,
-    KICK_PLAYER;
+    KICK_PLAYER,
+    MESSAGE;
 }

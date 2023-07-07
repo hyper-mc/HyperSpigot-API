@@ -11,6 +11,8 @@ import balbucio.sqlapi.sqlite.SQLiteInstance;
 import com.google.common.reflect.ClassPath;
 import lombok.SneakyThrows;
 import net.hyper.mc.spigot.HyperSpigot;
+import net.hyper.mc.spigot.player.FakePlayer;
+import net.hyper.mc.spigot.player.party.PartyPlayer;
 import org.bukkit.Warning.WarningState;
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
@@ -1159,6 +1161,11 @@ public final class Bukkit {
         registerCommands(commandClass.newInstance());
     }
 
+    @SneakyThrows
+    public static void registerCommand(Class<?> commandClass){
+        registerCommands(commandClass.newInstance());
+    }
+
     /**
      * Registers the commands in the class
      * @param commandClass Class
@@ -1196,6 +1203,22 @@ public final class Bukkit {
                     try { ParamProcessor.createProcessor((Processor<?>) info.load().newInstance());
                     } catch(Exception exception) { exception.printStackTrace(); }
                 });
+    }
+
+    public static PartyPlayer getPartyPlayer(String name){
+        PartyPlayer player = Bukkit.getPlayer(name);
+        if(player == null){
+            player = new FakePlayer(name);
+        }
+        return player;
+    }
+
+    public static void sendMessage(String name, String message){
+        getHyperSpigot().getBungeeManager().sendMessage(name, message);
+    }
+
+    public static void sendMessage(Player player, String message){
+        sendMessage(player.getName(), message);
     }
 
     public static SQLiteInstance getSQLite(){

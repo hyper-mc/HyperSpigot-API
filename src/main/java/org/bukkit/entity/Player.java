@@ -3,6 +3,7 @@ package org.bukkit.entity;
 import java.net.InetSocketAddress;
 import java.util.Map;
 
+import net.hyper.mc.spigot.player.party.PartyPlayer;
 import org.bukkit.Achievement;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
@@ -25,7 +26,7 @@ import org.bukkit.scoreboard.Scoreboard;
 /**
  * Represents a player, connected or not
  */
-public interface Player extends HumanEntity, Conversable, CommandSender, OfflinePlayer, PluginMessageRecipient {
+public interface Player extends HumanEntity, Conversable, CommandSender, OfflinePlayer, PluginMessageRecipient, PartyPlayer {
 
     /**
      * Gets the "friendly" name to display of this player. This may include
