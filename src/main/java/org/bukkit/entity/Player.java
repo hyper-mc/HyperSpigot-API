@@ -1101,6 +1101,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public void setData(String key, Object obj);
     public Map<String, Object> getPlayerData();
     public void deleteData(String key);
+    public String getBungeeUUID();
 
     // Spigot start
     public class Spigot extends Entity.Spigot

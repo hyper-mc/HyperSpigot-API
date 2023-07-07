@@ -27,6 +27,7 @@ public interface PluginMessageRecipient {
      *     registered for this plugin.
      */
     public void sendPluginMessage(Plugin source, String channel, byte[] message);
+    public void sendPluginMessage(String channel, byte[] message);
 
     /**
      * Gets a set containing all the Plugin Channels that this client is
