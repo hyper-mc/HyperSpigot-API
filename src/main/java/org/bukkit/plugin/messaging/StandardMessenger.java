@@ -2,10 +2,12 @@ package org.bukkit.plugin.messaging;
 
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.ImmutableSet.Builder;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -13,10 +15,10 @@ import org.bukkit.plugin.Plugin;
  * Standard implementation to {@link Messenger}
  */
 public class StandardMessenger implements Messenger {
-    private final Map<String, Set<PluginMessageListenerRegistration>> incomingByChannel = new HashMap<String, Set<PluginMessageListenerRegistration>>();
-    private final Map<Plugin, Set<PluginMessageListenerRegistration>> incomingByPlugin = new HashMap<Plugin, Set<PluginMessageListenerRegistration>>();
-    private final Map<String, Set<Plugin>> outgoingByChannel = new HashMap<String, Set<Plugin>>();
-    private final Map<Plugin, Set<String>> outgoingByPlugin = new HashMap<Plugin, Set<String>>();
+    private final Map<String, Set<PluginMessageListenerRegistration>> incomingByChannel = new HashMap<>();
+    private final Map<Plugin, Set<PluginMessageListenerRegistration>> incomingByPlugin = new HashMap<>();
+    private final Map<String, Set<Plugin>> outgoingByChannel = new HashMap<>();
+    private final Map<Plugin, Set<String>> outgoingByPlugin = new HashMap<>();
     private final Object incomingLock = new Object();
     private final Object outgoingLock = new Object();
 
@@ -32,10 +34,13 @@ public class StandardMessenger implements Messenger {
 
             if (channels == null) {
                 channels = new HashSet<String>();
-                outgoingByPlugin.put(plugin, channels);
+                if(plugin != null) {
+                    outgoingByPlugin.put(plugin, channels);
+                }
             }
-
-            plugins.add(plugin);
+            if(plugin != null) {
+                plugins.add(plugin);
+            }
             channels.add(channel);
         }
     }
@@ -84,7 +89,7 @@ public class StandardMessenger implements Messenger {
             Set<PluginMessageListenerRegistration> registrations = incomingByChannel.get(registration.getChannel());
 
             if (registrations == null) {
-                registrations = new HashSet<PluginMessageListenerRegistration>();
+                registrations = new HashSet<>();
                 incomingByChannel.put(registration.getChannel(), registrations);
             } else {
                 if (registrations.contains(registration)) {
@@ -94,18 +99,20 @@ public class StandardMessenger implements Messenger {
 
             registrations.add(registration);
 
-            registrations = incomingByPlugin.get(registration.getPlugin());
+            if (registration.getPlugin() != null) {
+                registrations = incomingByPlugin.get(registration.getPlugin());
 
-            if (registrations == null) {
-                registrations = new HashSet<PluginMessageListenerRegistration>();
-                incomingByPlugin.put(registration.getPlugin(), registrations);
-            } else {
-                if (registrations.contains(registration)) {
-                    throw new IllegalArgumentException("This registration already exists");
+                if (registrations == null) {
+                    registrations = new HashSet<>();
+                    incomingByPlugin.put(registration.getPlugin(), registrations);
+                } else {
+                    if (registrations.contains(registration)) {
+                        throw new IllegalArgumentException("This registration already exists");
+                    }
                 }
-            }
 
-            registrations.add(registration);
+                registrations.add(registration);
+            }
         }
     }
 
@@ -121,13 +128,15 @@ public class StandardMessenger implements Messenger {
                 }
             }
 
-            registrations = incomingByPlugin.get(registration.getPlugin());
+            if (registration.getPlugin() != null) {
+                registrations = incomingByPlugin.get(registration.getPlugin());
 
-            if (registrations != null) {
-                registrations.remove(registration);
+                if (registrations != null) {
+                    registrations.remove(registration);
 
-                if (registrations.isEmpty()) {
-                    incomingByPlugin.remove(registration.getPlugin());
+                    if (registrations.isEmpty()) {
+                        incomingByPlugin.remove(registration.getPlugin());
+                    }
                 }
             }
         }
@@ -172,9 +181,6 @@ public class StandardMessenger implements Messenger {
     }
 
     public void registerOutgoingPluginChannel(Plugin plugin, String channel) {
-        if (plugin == null) {
-            throw new IllegalArgumentException("Plugin cannot be null");
-        }
         validateChannel(channel);
         if (isReservedChannel(channel)) {
             throw new ReservedChannelException(channel);
@@ -184,9 +190,6 @@ public class StandardMessenger implements Messenger {
     }
 
     public void unregisterOutgoingPluginChannel(Plugin plugin, String channel) {
-        if (plugin == null) {
-            throw new IllegalArgumentException("Plugin cannot be null");
-        }
         validateChannel(channel);
 
         removeFromOutgoing(plugin, channel);
@@ -422,12 +425,10 @@ public class StandardMessenger implements Messenger {
 
         for (PluginMessageListenerRegistration registration : registrations) {
             // Spigot Start
-            try
-            {
-                registration.getListener().onPluginMessageReceived( channel, source, message );
-            } catch ( Throwable t )
-            {
-                org.bukkit.Bukkit.getLogger().log( java.util.logging.Level.WARNING, "Could not pass incoming plugin message to " + registration.getPlugin(), t );
+            try {
+                registration.getListener().onPluginMessageReceived(channel, source, message);
+            } catch (Throwable t) {
+                org.bukkit.Bukkit.getLogger().log(java.util.logging.Level.WARNING, "Could not pass incoming plugin message to " + registration.getPlugin(), t);
             }
             // Spigot End
         }
@@ -452,18 +453,18 @@ public class StandardMessenger implements Messenger {
      * valid.
      *
      * @param messenger Messenger to use for validation.
-     * @param source Source plugin of the Message.
-     * @param channel Plugin Channel to send the message by.
-     * @param message Raw message payload to send.
-     * @throws IllegalArgumentException Thrown if the source plugin is
-     *     disabled.
-     * @throws IllegalArgumentException Thrown if source, channel or message
-     *     is null.
-     * @throws MessageTooLargeException Thrown if the message is too big.
-     * @throws ChannelNameTooLongException Thrown if the channel name is too
-     *     long.
+     * @param source    Source plugin of the Message.
+     * @param channel   Plugin Channel to send the message by.
+     * @param message   Raw message payload to send.
+     * @throws IllegalArgumentException      Thrown if the source plugin is
+     *                                       disabled.
+     * @throws IllegalArgumentException      Thrown if source, channel or message
+     *                                       is null.
+     * @throws MessageTooLargeException      Thrown if the message is too big.
+     * @throws ChannelNameTooLongException   Thrown if the channel name is too
+     *                                       long.
      * @throws ChannelNotRegisteredException Thrown if the channel is not
-     *     registered for this plugin.
+     *                                       registered for this plugin.
      */
     public static void validatePluginMessage(Messenger messenger, Plugin source, String channel, byte[] message) {
         if (messenger == null) {
