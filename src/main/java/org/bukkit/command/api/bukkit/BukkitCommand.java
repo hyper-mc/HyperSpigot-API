@@ -2,6 +2,7 @@ package org.bukkit.command.api.bukkit;
 
 import lombok.Getter;
 import lombok.SneakyThrows;
+import org.bukkit.Bukkit;
 import org.bukkit.command.api.CommandHandler;
 import org.bukkit.command.api.help.HelpNode;
 import org.bukkit.command.api.node.ArgumentNode;
@@ -23,9 +24,9 @@ public class BukkitCommand extends Command {
         super(root);
         commands.put(root.toLowerCase(), this);
 
-        Field commandMap = CommandHandler.getPlugin().getServer().getClass().getDeclaredField("commandMap");
+        Field commandMap = Bukkit.getServer().getClass().getDeclaredField("commandMap");
         commandMap.setAccessible(true);
-        ((org.bukkit.command.CommandMap) commandMap.get(CommandHandler.getPlugin().getServer())).register(CommandHandler.getPlugin().getName(), this);
+        ((org.bukkit.command.CommandMap) commandMap.get(Bukkit.getServer())).register("HyperSpigot", this);
     }
 
     @SneakyThrows

@@ -1,5 +1,6 @@
 package org.bukkit.command.api.node;
 
+import balbucio.responsivescheduler.RSTask;
 import lombok.Getter;
 import lombok.SneakyThrows;
 import org.bukkit.command.api.Command;
@@ -73,7 +74,7 @@ public class CommandNode {
 
         // Makes it so you can use /plugin:command
         List<String> toAdd = new ArrayList<>();
-        names.forEach(name -> toAdd.add(CommandHandler.getPlugin().getName() + ":" + name.toLowerCase()));
+        names.forEach(name -> toAdd.add("HyperSpigot" + ":" + name.toLowerCase()));
         names.addAll(toAdd);
 
         // Add node to array list
@@ -246,8 +247,11 @@ public class CommandNode {
         for(int i = 0; i < difference; i++) objects.add(null);
 
         if(async) {
-            Bukkit.getScheduler().runTaskAsynchronously(CommandHandler.getPlugin(), () -> {
-                try { method.invoke(parentClass, objects.toArray()); } catch(Exception exception) { exception.printStackTrace(); }
+            Bukkit.getRScheduler().runAsyncTask(new RSTask() {
+                @Override
+                public void run() {
+                    try { method.invoke(parentClass, objects.toArray()); } catch(Exception exception) { exception.printStackTrace(); }
+                }
             });
             return;
         }
