@@ -10,6 +10,7 @@ import balbucio.responsivescheduler.ResponsiveScheduler;
 import balbucio.sqlapi.sqlite.SQLiteInstance;
 import com.google.common.reflect.ClassPath;
 import lombok.SneakyThrows;
+import net.hyper.mc.spigot.HyperSpigot;
 import org.bukkit.Warning.WarningState;
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
@@ -1203,6 +1204,10 @@ public final class Bukkit {
 
     public static ResponsiveScheduler getRScheduler(){
         return server.getResponsiveScheduler();
+    }
+
+    public static HyperSpigot getHyperSpigot(){
+        return server.getHyperSpigot();
     }
 
     public static Server.Spigot spigot()

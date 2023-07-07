@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 import balbucio.responsivescheduler.ResponsiveScheduler;
 import balbucio.sqlapi.sqlite.SQLiteInstance;
+import net.hyper.mc.spigot.HyperSpigot;
 import org.bukkit.Warning.WarningState;
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
@@ -962,6 +963,7 @@ public interface Server extends PluginMessageRecipient {
 
     SQLiteInstance getSQLiteInstance();
     ResponsiveScheduler getResponsiveScheduler();
+    HyperSpigot getHyperSpigot();
 
     Spigot spigot();
 }
