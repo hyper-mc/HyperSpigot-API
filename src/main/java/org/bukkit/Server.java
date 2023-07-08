@@ -964,6 +964,7 @@ public interface Server extends PluginMessageRecipient {
     SQLiteInstance getSQLiteInstance();
     ResponsiveScheduler getResponsiveScheduler();
     HyperSpigot getHyperSpigot();
+    String getMinecraftServer();
 
     Spigot spigot();
 }
