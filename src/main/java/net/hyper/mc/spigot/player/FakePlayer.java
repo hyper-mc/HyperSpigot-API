@@ -1,5 +1,6 @@
 package net.hyper.mc.spigot.player;
 
+import net.hyper.mc.spigot.player.party.Party;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.conversations.Conversation;
@@ -1212,6 +1213,11 @@ public class FakePlayer implements Player {
 
     @Override
     public String getBungeeUUID() {
+        return null;
+    }
+
+    @Override
+    public Party getParty() {
         return null;
     }
 
