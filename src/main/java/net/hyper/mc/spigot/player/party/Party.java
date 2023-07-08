@@ -76,6 +76,24 @@ public class Party {
         party.setMembers(members);
         return party;
     }
+    
+    public void update(JSONObject json){
+        this.setId(json.getString("id"));
+        this.setName(json.getString("name"));
+        this.setOwner(Bukkit.getPartyPlayer(json.getString("name")));
+        this.setOpen(json.getBoolean("open"));
+        this.setMaxSize(json.getInt("maxSize"));
+        Map<PartyPlayer, PartyRole> members = new HashMap<>();
+        json.getJSONObject("members").toMap().forEach((k, o) -> {
+            members.put(Bukkit.getPartyPlayer(k), PartyRole.valueOf((String) o));
+        });
+        Map<String, Long> convites = new HashMap<>();
+        json.getJSONObject("convites").toMap().forEach((k, o) -> {
+            convites.put(k, (long) o);
+        });
+        this.setConvites(convites);
+        this.setMembers(members);
+    }
 
     public JSONObject getPartyJson(){
         JSONObject object = new JSONObject();
