@@ -29,8 +29,11 @@ public class Party {
         this.name = "§7Party do "+owner.getName();
     }
 
-    public void broadcast(String message){
+    public void broadcast(String message, boolean owner){
         members.keySet().forEach(p -> Bukkit.sendMessage((Player) p, message));
+        if(owner){
+            Bukkit.sendMessage((Player) this.owner, message);
+        }
     }
 
     public void broadcast(String message, PartyRole role){
