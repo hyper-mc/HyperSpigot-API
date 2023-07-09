@@ -5,6 +5,7 @@ import java.util.Map;
 
 import net.hyper.mc.spigot.player.party.Party;
 import net.hyper.mc.spigot.player.party.PartyPlayer;
+import net.hyper.mc.spigot.player.role.Role;
 import org.bukkit.Achievement;
 import org.bukkit.ChatColor;
 import org.bukkit.Effect;
@@ -1105,6 +1106,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public void deleteData(String key);
     public String getBungeeUUID();
     public Party getParty();
+    public Role getRole();
 
     // Spigot start
     public class Spigot extends Entity.Spigot
