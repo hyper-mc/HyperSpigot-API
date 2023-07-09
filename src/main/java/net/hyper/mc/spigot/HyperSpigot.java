@@ -7,4 +7,5 @@ public interface HyperSpigot {
 
     HyperMessageBroker getMessenger();
     IBungeeManager getBungeeManager();
+    void setData(String name, String key, Object value);
 }
