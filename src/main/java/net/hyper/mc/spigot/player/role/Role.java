@@ -13,4 +13,9 @@ public class Role {
     private int multiplier;
     private boolean multicolor;
     private String permission;
+
+    public String getFormmatedTag(String name){
+        tag = tag.replace("&", "§");
+        return tag+" "+name;
+    }
 }
