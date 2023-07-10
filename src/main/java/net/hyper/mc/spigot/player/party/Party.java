@@ -21,6 +21,7 @@ public class Party {
     private Map<PartyPlayer, PartyRole> members = new HashMap<>();
     private Map<String, Long> convites = new HashMap<>();
     private boolean open = false;
+    private boolean chatMuted = false;
 
     public Party(){}
 
@@ -77,6 +78,8 @@ public class Party {
         });
         party.setConvites(convites);
         party.setMembers(members);
+        party.setChatMuted(json.getBoolean("chatmuted"));
+        party.setCreateTime(new Date(json.getLong("creationdate")));
         return party;
     }
     
@@ -96,6 +99,8 @@ public class Party {
         });
         this.setConvites(convites);
         this.setMembers(members);
+        this.setChatMuted(json.getBoolean("chatmuted"));
+        this.setCreateTime(new Date(json.getLong("creationdate")));
     }
 
     public JSONObject getPartyJson(){
@@ -109,6 +114,8 @@ public class Party {
         object.put("members", mbrs);
         object.put("convites", convites);
         object.put("open", open);
+        object.put("chatmuted", chatMuted);
+        object.put("creationdate", createTime.getTime());
         return object;
     }
 }
