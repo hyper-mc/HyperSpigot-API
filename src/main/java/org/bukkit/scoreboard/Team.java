@@ -172,7 +172,6 @@ public interface Team {
      * @deprecated Teams can contain entries that aren't players
      * @see #addEntry(String)
      */
-    @Deprecated
     void addPlayer(OfflinePlayer player) throws IllegalStateException, IllegalArgumentException;
 
     /**

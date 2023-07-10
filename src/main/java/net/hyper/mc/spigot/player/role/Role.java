@@ -15,7 +15,10 @@ public class Role {
     private String permission;
 
     public String getFormmatedTag(String name){
-        tag = tag.replace("&", "§");
-        return tag+" "+name;
+        return getTag()+" "+name;
+    }
+
+    public String getTag(){
+        return tag.replace("&", "§");
     }
 }
