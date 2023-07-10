@@ -1,6 +1,7 @@
 package net.hyper.mc.spigot.player;
 
 import net.hyper.mc.spigot.player.party.Party;
+import net.hyper.mc.spigot.player.scoreboard.TeamManager;
 import net.hyper.mc.spigot.player.role.Role;
 import org.bukkit.*;
 import org.bukkit.block.Block;
@@ -55,6 +56,11 @@ public class FakePlayer implements Player {
     @Override
     public void setWhitelisted(boolean value) {
 
+    }
+
+    @Override
+    public TeamManager getTeamManager() {
+        return null;
     }
 
     @Override

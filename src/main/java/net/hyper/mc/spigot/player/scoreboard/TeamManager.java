@@ -1,4 +1,4 @@
-package net.hyper.mc.spigot.player.party;
+package net.hyper.mc.spigot.player.scoreboard;
 
 import net.hyper.mc.spigot.player.role.Role;
 import net.hyper.mc.spigot.player.role.RoleManager;

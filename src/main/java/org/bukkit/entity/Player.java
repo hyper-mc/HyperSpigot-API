@@ -5,6 +5,7 @@ import java.util.Map;
 
 import net.hyper.mc.spigot.player.party.Party;
 import net.hyper.mc.spigot.player.party.PartyPlayer;
+import net.hyper.mc.spigot.player.scoreboard.TeamManager;
 import net.hyper.mc.spigot.player.role.Role;
 import org.bukkit.Achievement;
 import org.bukkit.ChatColor;
@@ -1107,6 +1108,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public String getBungeeUUID();
     public Party getParty();
     public Role getRole();
+    public TeamManager getTeamManager();
 
     // Spigot start
     public class Spigot extends Entity.Spigot
