@@ -13,58 +13,60 @@ import org.bukkit.potion.PotionEffect;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class AbstractItemCreator {
+public abstract class ItemCreator {
+
     protected ItemStack item;
 
-    public AbstractItemCreator(final ItemStack item) {
+    public ItemCreator(final ItemStack item) {
         this.item = item;
     }
 
-    public AbstractItemCreator(final Material mat) {
+    public ItemCreator(final Material mat) {
         this.item = new ItemStack(mat);
     }
 
-    public AbstractItemCreator(final Material mat, final int amount) {
+    public ItemCreator(final Material mat, final int amount) {
         this.item = new ItemStack(mat, amount);
     }
 
-    public AbstractItemCreator(final Material mat, final byte data) {
+    public ItemCreator(final Material mat, final byte data) {
         this.item = new ItemStack(mat, 1, data);
     }
 
-    public AbstractItemCreator(final Material mat, final byte data, final int amount) {
+    public ItemCreator(final Material mat, final byte data, final int amount) {
         this.item = new ItemStack(mat, amount, data);
     }
 
-    public AbstractItemCreator withName(final String name) {
+    public ItemCreator withName(final String name) {
         final ItemMeta meta = this.item.getItemMeta();
         meta.setDisplayName(name);
         this.item.setItemMeta(meta);
         return this;
     }
 
-    public AbstractItemCreator withData(final int data) {
+    public ItemCreator withData(final int data) {
         final MaterialData meta = this.item.getData();
         item.getData().setData((byte) data);
         return this;
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    public AbstractItemCreator withLore(final String... lore) {
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public ItemCreator withLore(final String... lore) {
         final ItemMeta meta = this.item.getItemMeta();
         meta.setLore((List) Arrays.asList(lore));
         this.item.setItemMeta(meta);
         return this;
     }
 
-    public AbstractItemCreator withArrayLore(final List<String> lore) {
+    public ItemCreator withArrayLore(final List<String> lore) {
         final ItemMeta meta = this.item.getItemMeta();
-        meta.setLore((List)lore);
+        meta.setLore((List) lore);
         this.item.setItemMeta(meta);
         return this;
     }
-    @SuppressWarnings({ "unchecked", "rawtypes" })
-    public AbstractItemCreator addLore(final List<String> lore) {
+
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    public ItemCreator addLore(final List<String> lore) {
         final ItemMeta meta = this.item.getItemMeta();
         final List<String> a = meta.getLore();
         for (final String s : lore) {
@@ -76,63 +78,64 @@ public abstract class AbstractItemCreator {
     }
 
     @SuppressWarnings("deprecation")
-    public AbstractItemCreator withColor(int r, int g, int b) {
+    public ItemCreator withColor(int r, int g, int b) {
         final LeatherArmorMeta meta = (LeatherArmorMeta) this.item.getItemMeta();
-        meta.setColor(Color.fromRGB(r,g,b));
+        meta.setColor(Color.fromRGB(r, g, b));
         this.item.setItemMeta(meta);
         return this;
     }
 
-    public AbstractItemCreator withOwner(final String owner) {
+    public ItemCreator withOwner(final String owner) {
         if (this.item.getType().equals((Object) Material.SKULL_ITEM)) {
-            this.item.setDurability((short)3);
-            final SkullMeta m = (SkullMeta)this.item.getItemMeta();
+            this.item.setDurability((short) 3);
+            final SkullMeta m = (SkullMeta) this.item.getItemMeta();
             m.setOwner(owner);
-            this.item.setItemMeta((ItemMeta)m);
+            this.item.setItemMeta((ItemMeta) m);
         }
         return this;
     }
 
-    public AbstractItemCreator withAmount(final int amount) {
+    public ItemCreator withAmount(final int amount) {
         this.item.setAmount(amount);
         return this;
     }
 
-    public AbstractItemCreator withEnchant(final Enchantment e, final int lvl) {
+    public ItemCreator withEnchant(final Enchantment e, final int lvl) {
         this.item.addUnsafeEnchantment(e, lvl);
         return this;
     }
 
-    public AbstractItemCreator withEffect(final PotionEffect e) {
+    public ItemCreator withEffect(final PotionEffect e) {
         if (!this.item.getType().equals((Object) Material.POTION)) {
             return this;
         }
-        final PotionMeta pm = (PotionMeta)this.item.getItemMeta();
+        final PotionMeta pm = (PotionMeta) this.item.getItemMeta();
         pm.addCustomEffect(e, true);
-        this.item.setItemMeta((ItemMeta)pm);
+        this.item.setItemMeta((ItemMeta) pm);
         return this;
     }
 
-    public AbstractItemCreator unbreakable() {
+    public ItemCreator unbreakable() {
         this.item.getItemMeta().spigot().setUnbreakable(true);
         return this;
     }
 
-    public AbstractItemCreator removeItemFlag(ItemFlag flag) {
+    public ItemCreator removeItemFlag(ItemFlag flag) {
         this.item.getItemMeta().removeItemFlags(flag);
         return this;
     }
 
-    public AbstractItemCreator removeFlags() {
-        for(ItemFlag itemFlag : ItemFlag.values()) {
+    public ItemCreator removeFlags() {
+        for (ItemFlag itemFlag : ItemFlag.values()) {
             this.item.getItemMeta().removeItemFlags(itemFlag);
         }
         return this;
     }
 
-    public abstract AbstractItemCreator withTexture(String url) throws NoSuchFieldException, IllegalAccessException;
+    public abstract ItemCreator withTexture(String url);
 
     public ItemStack done() {
         return this.item;
     }
+
 }

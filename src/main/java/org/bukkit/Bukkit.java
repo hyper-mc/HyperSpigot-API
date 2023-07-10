@@ -29,10 +29,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.help.HelpMap;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.InventoryHolder;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.Recipe;
+import org.bukkit.inventory.*;
 import org.bukkit.map.MapView;
 import org.bukkit.permissions.Permissible;
 import org.bukkit.plugin.Plugin;
@@ -47,7 +44,6 @@ import com.avaje.ebean.config.ServerConfig;
 import com.google.common.collect.ImmutableList;
 import org.bukkit.generator.ChunkGenerator;
 
-import org.bukkit.inventory.ItemFactory;
 import org.bukkit.inventory.meta.ItemMeta;
 
 /**
@@ -1231,6 +1227,14 @@ public final class Bukkit {
 
     public static HyperSpigot getHyperSpigot(){
         return server.getHyperSpigot();
+    }
+
+    public static ItemCreator createItemCreator(Material material){
+        return server.createItemCreator(material);
+    }
+
+    public static ItemCreator createItemCreator(ItemStack stack){
+        return server.createItemCreator(stack);
     }
 
     public static Server.Spigot spigot()
