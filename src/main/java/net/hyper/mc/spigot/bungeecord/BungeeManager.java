@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 
 import java.util.Map;
 
-public interface IBungeeManager{
+public interface BungeeManager {
 
     void requestUpdate(BungeeAction action, Player player, Object value);
 
