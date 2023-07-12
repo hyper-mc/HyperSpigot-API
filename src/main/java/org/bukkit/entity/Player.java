@@ -1109,7 +1109,15 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public Party getParty();
     public Role getRole();
     public TeamManager getTeamManager();
-
+    public int getLevel(String key);
+    public void setExperience(String key, long value);
+    public void addExperience(String key, long value);
+    public void removeExperience(String key, long value);
+    public long getExperience(String key);
+    public long getCash();
+    public void addCash(long cash);
+    public void setCash(long cash);
+    public void removeCash(long cash);
     // Spigot start
     public class Spigot extends Entity.Spigot
     {
