@@ -66,7 +66,7 @@ public class Party {
         Party party = new Party();
         party.setId(json.getString("id"));
         party.setName(json.getString("name"));
-        party.setOwner(Bukkit.getPartyPlayer(json.getString("name")));
+        party.setOwner(Bukkit.getPartyPlayer(json.getString("owner")));
         party.setOpen(json.getBoolean("open"));
         party.setMaxSize(json.getInt("maxSize"));
         ConcurrentHashMap<PartyPlayer, PartyRole> members = new ConcurrentHashMap<>();
