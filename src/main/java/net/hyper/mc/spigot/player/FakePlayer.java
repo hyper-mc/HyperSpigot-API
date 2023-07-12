@@ -64,6 +64,51 @@ public class FakePlayer implements Player {
     }
 
     @Override
+    public int getLevel(String key) {
+        return 0;
+    }
+
+    @Override
+    public void setExperience(String key, long value) {
+
+    }
+
+    @Override
+    public void addExperience(String key, long value) {
+
+    }
+
+    @Override
+    public void removeExperience(String key, long value) {
+
+    }
+
+    @Override
+    public long getExperience(String key) {
+        return 0;
+    }
+
+    @Override
+    public long getCash() {
+        return 0;
+    }
+
+    @Override
+    public void addCash(long cash) {
+
+    }
+
+    @Override
+    public void setCash(long cash) {
+
+    }
+
+    @Override
+    public void removeCash(long cash) {
+
+    }
+
+    @Override
     public Player getPlayer() {
         return null;
     }
