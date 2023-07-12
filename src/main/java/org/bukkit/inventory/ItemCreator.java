@@ -10,6 +10,7 @@ import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.material.MaterialData;
 import org.bukkit.potion.PotionEffect;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -66,9 +67,9 @@ public abstract class ItemCreator {
     }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
-    public ItemCreator addLore(final List<String> lore) {
+    public ItemCreator addLore(List<String> lore) {
         final ItemMeta meta = this.item.getItemMeta();
-        final List<String> a = meta.getLore();
+        final List<String> a = new ArrayList<>();
         for (final String s : lore) {
             a.add(s);
         }
