@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.json.JSONObject;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 
 @Data
@@ -18,8 +19,8 @@ public class Party {
     private String name;
     private PartyPlayer owner;
     private int maxSize = 5;
-    private Map<PartyPlayer, PartyRole> members = new HashMap<>();
-    private Map<String, Long> convites = new HashMap<>();
+    private ConcurrentHashMap<PartyPlayer, PartyRole> members = new ConcurrentHashMap<>();
+    private ConcurrentHashMap<String, Long> convites = new ConcurrentHashMap<>();
     private boolean open = false;
     private boolean chatMuted = false;
 
@@ -68,11 +69,11 @@ public class Party {
         party.setOwner(Bukkit.getPartyPlayer(json.getString("name")));
         party.setOpen(json.getBoolean("open"));
         party.setMaxSize(json.getInt("maxSize"));
-        Map<PartyPlayer, PartyRole> members = new HashMap<>();
+        ConcurrentHashMap<PartyPlayer, PartyRole> members = new ConcurrentHashMap<>();
         json.getJSONObject("members").toMap().forEach((k, o) -> {
             members.put(Bukkit.getPartyPlayer(k), PartyRole.valueOf((String) o));
         });
-        Map<String, Long> convites = new HashMap<>();
+        ConcurrentHashMap<String, Long> convites = new ConcurrentHashMap<>();
         json.getJSONObject("convites").toMap().forEach((k, o) -> {
             convites.put(k, (long) o);
         });
@@ -89,11 +90,11 @@ public class Party {
         this.setOwner(Bukkit.getPartyPlayer(json.getString("name")));
         this.setOpen(json.getBoolean("open"));
         this.setMaxSize(json.getInt("maxSize"));
-        Map<PartyPlayer, PartyRole> members = new HashMap<>();
+        ConcurrentHashMap<PartyPlayer, PartyRole> members = new ConcurrentHashMap<>();
         json.getJSONObject("members").toMap().forEach((k, o) -> {
             members.put(Bukkit.getPartyPlayer(k), PartyRole.valueOf((String) o));
         });
-        Map<String, Long> convites = new HashMap<>();
+        ConcurrentHashMap<String, Long> convites = new ConcurrentHashMap<>();
         json.getJSONObject("convites").toMap().forEach((k, o) -> {
             convites.put(k, (long) o);
         });
