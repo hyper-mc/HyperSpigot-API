@@ -1,6 +1,6 @@
 package net.hyper.mc.spigot;
 
-import net.hyper.mc.inventories.InventoriesPlugin;
+//import net.hyper.mc.inventories.InventoriesPlugin;
 import net.hyper.mc.msgbrokerapi.HyperMessageBroker;
 import net.hyper.mc.spigot.bungeecord.BungeeManager;
 import net.hyper.mc.spigot.player.role.RoleManager;
