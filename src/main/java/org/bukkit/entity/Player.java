@@ -1127,6 +1127,8 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public void setHotBarConfig(HotBarConfig config);
     public ItemStack getPlayerVisibilityItem();
     public void setPlayerVisibility(boolean b);
+    public boolean getPlayerVisibility();
+
 
     // Spigot start
     public class Spigot extends Entity.Spigot
