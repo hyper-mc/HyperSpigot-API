@@ -1,5 +1,7 @@
 package net.hyper.mc.spigot.player;
 
+import net.hyper.mc.spigot.player.hotbar.HotBar;
+import net.hyper.mc.spigot.player.hotbar.HotBarConfig;
 import net.hyper.mc.spigot.player.party.Party;
 import net.hyper.mc.spigot.player.scoreboard.TeamManager;
 import net.hyper.mc.spigot.player.role.Role;
@@ -105,6 +107,41 @@ public class FakePlayer implements Player {
 
     @Override
     public void removeCash(long cash) {
+
+    }
+
+    @Override
+    public void setHotBar(HotBar hotbar, HotBarConfig config, boolean clear) {
+
+    }
+
+    @Override
+    public HotBar getHotBar() {
+        return null;
+    }
+
+    @Override
+    public void removeHotBar(HotBarConfig config) {
+
+    }
+
+    @Override
+    public HotBarConfig getHotBarConfig() {
+        return null;
+    }
+
+    @Override
+    public void setHotBarConfig(HotBarConfig config) {
+
+    }
+
+    @Override
+    public ItemStack getPlayerVisibilityItem() {
+        return null;
+    }
+
+    @Override
+    public void setPlayerVisibility(boolean b) {
 
     }
 
