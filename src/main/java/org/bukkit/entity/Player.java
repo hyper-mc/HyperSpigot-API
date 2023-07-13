@@ -3,6 +3,8 @@ package org.bukkit.entity;
 import java.net.InetSocketAddress;
 import java.util.Map;
 
+import net.hyper.mc.spigot.player.hotbar.HotBar;
+import net.hyper.mc.spigot.player.hotbar.HotBarConfig;
 import net.hyper.mc.spigot.player.party.Party;
 import net.hyper.mc.spigot.player.party.PartyPlayer;
 import net.hyper.mc.spigot.player.scoreboard.TeamManager;
@@ -1118,6 +1120,12 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public void addCash(long cash);
     public void setCash(long cash);
     public void removeCash(long cash);
+    public void setHotBar(HotBar hotbar, HotBarConfig config, boolean clear);
+    public HotBar getHotBar();
+    public void removeHotBar(HotBarConfig config);
+    public HotBarConfig getHotBarConfig();
+    public void setHotBarConfig(HotBarConfig config);
+
     // Spigot start
     public class Spigot extends Entity.Spigot
     {
