@@ -20,5 +20,7 @@ public interface HyperSpigot {
     void copyWorldFolder(File source, File targer);
     File createWorldBackup(String pluginName, World world);
     World loadWorld(String worldName);
+    /**
     InventoriesPlugin getInventoryPlugin();
+    **/
 }
