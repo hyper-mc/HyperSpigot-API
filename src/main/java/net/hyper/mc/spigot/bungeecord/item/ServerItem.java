@@ -19,8 +19,10 @@ public class ServerItem {
         ItemCreator itemCreator = Bukkit
                 .createItemCreator(Material.getMaterial(material))
                 .withData(data)
-                .withTexture(texture)
                 .withAmount(amount);
+        if(!texture.equalsIgnoreCase("null")){
+            itemCreator.withTexture(texture);
+        }
         return itemCreator;
     }
 }

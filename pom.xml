@@ -119,6 +119,7 @@
             <groupId>net.hyper.mc</groupId>
             <artifactId>HyperSpigot-Inventories</artifactId>
             <version>1.0.2</version>
+            <scope>provided</scope>
         </dependency>
         <!-- testing -->
         <dependency>
