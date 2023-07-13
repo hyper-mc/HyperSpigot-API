@@ -1128,7 +1128,8 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public ItemStack getPlayerVisibilityItem();
     public void setPlayerVisibility(boolean b);
     public boolean getPlayerVisibility();
-
+    public void openProfileMenu();
+    public void openServerMenu();
 
     // Spigot start
     public class Spigot extends Entity.Spigot
