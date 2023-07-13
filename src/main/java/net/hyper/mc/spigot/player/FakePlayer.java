@@ -146,6 +146,21 @@ public class FakePlayer implements Player {
     }
 
     @Override
+    public boolean getPlayerVisibility() {
+        return false;
+    }
+
+    @Override
+    public void openProfileMenu() {
+
+    }
+
+    @Override
+    public void openServerMenu() {
+
+    }
+
+    @Override
     public Player getPlayer() {
         return null;
     }
