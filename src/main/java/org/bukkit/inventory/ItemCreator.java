@@ -86,6 +86,11 @@ public abstract class ItemCreator {
         return this;
     }
 
+    public ItemCreator withDurability(short id){
+        item.setDurability(id);
+        return this;
+    }
+
     public ItemCreator withOwner(final String owner) {
         if (this.item.getType().equals((Object) Material.SKULL_ITEM)) {
             this.item.setDurability((short) 3);
