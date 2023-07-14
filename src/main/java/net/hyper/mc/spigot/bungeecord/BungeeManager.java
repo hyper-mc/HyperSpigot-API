@@ -15,7 +15,7 @@ public interface BungeeManager {
     public void sendMessage(String name, String message);
     public void sendMessage(Player player, String message);
     public int getOnlineCount();
-
+    public String getServerName();
     public CopyOnWriteArrayList<Server> getServerItems();
 
 }

@@ -115,14 +115,6 @@
             <artifactId>HyperMessageBroker-API</artifactId>
             <version>1.1</version>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>net.hyper.mc</groupId>
-            <artifactId>HyperSpigot-Inventories</artifactId>
-            <version>1.0.2</version>
-            <scope>provided</scope>
-        </dependency>
-        -->
         <!-- testing -->
         <dependency>
             <groupId>junit</groupId>
