@@ -3,6 +3,7 @@ package org.bukkit;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.hyper.mc.spigot.world.Position;
 import org.bukkit.block.Block;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.util.NumberConversions;
@@ -555,6 +556,10 @@ public class Location implements Cloneable, ConfigurationSerializable {
         }
     }
 
+    public Position convertToPosition(){
+        return new Position(world.getName(), x, y, z);
+    }
+
     /**
      * Safely converts a double (location coordinate) to an int (block
      * coordinate)
@@ -597,4 +602,6 @@ public class Location implements Cloneable, ConfigurationSerializable {
 
 		return new Location(world, NumberConversions.toDouble(args.get("x")), NumberConversions.toDouble(args.get("y")), NumberConversions.toDouble(args.get("z")), NumberConversions.toFloat(args.get("yaw")), NumberConversions.toFloat(args.get("pitch")));
 	}
+
+
 }
