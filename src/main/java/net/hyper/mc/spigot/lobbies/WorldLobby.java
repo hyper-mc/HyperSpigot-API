@@ -11,7 +11,7 @@ import org.bukkit.Location;
 @NoArgsConstructor
 public class WorldLobby {
 
-    private String id = TokenCreator.createToken(12);
+    private String id = TokenCreator.createToken(48);
     private String type;
     private String event;
     private Location location;

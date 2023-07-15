@@ -12,6 +12,7 @@ public interface LobbyManager {
     void removeSpawn(WorldLobby lobby);
     WorldLobby getLobbyInWorld(World world);
     boolean hasLobbyInWorld(World world);
+    boolean hasLobbyID(String id );
     WorldLobby getLobbyWithId(String ID);
     List<WorldLobby> getLobby(String type, String event);
     List<String> getNetworkLobby(String type, String event);
@@ -19,5 +20,6 @@ public interface LobbyManager {
     CopyOnWriteArrayList<WorldLobby> getLobbies();
     void setServerType(String type);
     String getServerType();
+    int getOnlineInLobbyID(String id);
     void save();
 }
