@@ -6,6 +6,7 @@ import net.hyper.mc.spigot.bungeecord.BungeeManager;
 import net.hyper.mc.spigot.lobbies.LobbyManager;
 import net.hyper.mc.spigot.lobbies.ServerLobby;
 import net.hyper.mc.spigot.lobbies.WorldLobby;
+import net.hyper.mc.spigot.network.NetworkManager;
 import net.hyper.mc.spigot.player.role.RoleManager;
 import net.hyper.mc.spigot.player.scoreboard.BoardManager;
 import net.hyper.mc.spigot.player.scoreboard.settings.BoardSettings;
@@ -22,6 +23,7 @@ public interface HyperSpigot {
     RoleManager getRoleManager();
     BoardManager createBoardManager(BoardSettings settings);
     LobbyManager getLobbyManager();
+    NetworkManager getNetworkManager();
     void setData(String name, String key, Object value);
     void copyWorldFolder(File source, File targer);
     File createWorldBackup(String pluginName, World world);
