@@ -14,4 +14,5 @@ public interface BoardManager {
     boolean hasBoard(Player player);
     Optional<Board> getBoard(Player player);
     Map<UUID, Board> getScoreboards();
+    void setup(Player player);
 }

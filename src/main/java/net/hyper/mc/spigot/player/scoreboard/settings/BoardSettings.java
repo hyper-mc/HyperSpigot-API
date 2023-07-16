@@ -11,5 +11,6 @@ public class BoardSettings {
     private BoardProvider boardProvider;
 
     private ScoreDirection scoreDirection;
+    private boolean defaultScoreboard = false;
 
 }
