@@ -161,6 +161,11 @@ public class FakePlayer implements Player {
     }
 
     @Override
+    public void openLobbiesMenu(String type) {
+
+    }
+
+    @Override
     public Player getPlayer() {
         return null;
     }

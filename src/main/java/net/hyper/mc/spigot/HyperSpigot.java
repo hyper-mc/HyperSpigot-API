@@ -28,5 +28,4 @@ public interface HyperSpigot {
     World loadWorld(String worldName);
     CopyOnWriteArrayList<WorldLobby> getLobbies();
     CopyOnWriteArrayList<ServerLobby> getNetworkLobbies();
-
 }
