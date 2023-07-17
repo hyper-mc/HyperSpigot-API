@@ -2,6 +2,7 @@ package net.hyper.mc.spigot.lobbies;
 
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.entity.Player;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -21,5 +22,6 @@ public interface LobbyManager {
     void setServerType(String type);
     String getServerType();
     int getOnlineInLobbyID(String id);
+    void connectServerLobby(String lobbyID, Player player);
     void save();
 }

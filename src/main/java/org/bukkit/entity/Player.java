@@ -3,6 +3,7 @@ package org.bukkit.entity;
 import java.net.InetSocketAddress;
 import java.util.Map;
 
+import net.hyper.mc.spigot.lobbies.WorldLobby;
 import net.hyper.mc.spigot.player.hotbar.HotBar;
 import net.hyper.mc.spigot.player.hotbar.HotBarConfig;
 import net.hyper.mc.spigot.player.party.Party;
@@ -1131,6 +1132,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public void openProfileMenu();
     public void openServerMenu();
     public void openLobbiesMenu(String type);
+    public WorldLobby getLobby();
 
     // Spigot start
     public class Spigot extends Entity.Spigot

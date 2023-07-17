@@ -1,6 +1,7 @@
 package org.bukkit.inventory;
 
 import org.bukkit.Color;
+import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -8,6 +9,7 @@ import org.bukkit.inventory.meta.LeatherArmorMeta;
 import org.bukkit.inventory.meta.PotionMeta;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.material.MaterialData;
+import org.bukkit.material.Wool;
 import org.bukkit.potion.PotionEffect;
 
 import java.util.ArrayList;
@@ -139,6 +141,11 @@ public abstract class ItemCreator {
     }
 
     public abstract ItemCreator withTexture(String url);
+
+    public ItemCreator setColor(DyeColor color){
+        this.withData(color.getData());
+        return this;
+    }
 
     public ItemStack done() {
         return this.item;

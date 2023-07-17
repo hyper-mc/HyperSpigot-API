@@ -1,5 +1,6 @@
 package net.hyper.mc.spigot.player;
 
+import net.hyper.mc.spigot.lobbies.WorldLobby;
 import net.hyper.mc.spigot.player.hotbar.HotBar;
 import net.hyper.mc.spigot.player.hotbar.HotBarConfig;
 import net.hyper.mc.spigot.player.party.Party;
@@ -163,6 +164,11 @@ public class FakePlayer implements Player {
     @Override
     public void openLobbiesMenu(String type) {
 
+    }
+
+    @Override
+    public WorldLobby getLobby() {
+        return null;
     }
 
     @Override
