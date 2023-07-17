@@ -1237,6 +1237,13 @@ public final class Bukkit {
         return server.createItemCreator(stack);
     }
 
+    public static ItemStack getServerItem(){
+        return createItemCreator(Material.COMPASS)
+                .withName("§aModos de Jogo")
+                .addLore(Arrays.asList("", "§7Clique para ver todos os modos de jogo."))
+                .done();
+    }
+
     public static Server.Spigot spigot()
     {
         return server.spigot();
