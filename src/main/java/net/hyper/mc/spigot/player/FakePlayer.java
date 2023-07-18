@@ -156,6 +156,7 @@ public class FakePlayer implements Player {
 
     }
 
+
     @Override
     public void openServerMenu() {
 
@@ -163,6 +164,11 @@ public class FakePlayer implements Player {
 
     @Override
     public void openLobbiesMenu(String type) {
+
+    }
+
+    @Override
+    public void openPartyMenu() {
 
     }
 

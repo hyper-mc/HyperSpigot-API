@@ -1132,6 +1132,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public void openProfileMenu();
     public void openServerMenu();
     public void openLobbiesMenu(String type);
+    public void openPartyMenu();
     public WorldLobby getLobby();
 
     // Spigot start
