@@ -4,6 +4,7 @@ import java.net.InetSocketAddress;
 import java.util.Map;
 
 import net.hyper.mc.spigot.lobbies.WorldLobby;
+import net.hyper.mc.spigot.model.ConfirmModel;
 import net.hyper.mc.spigot.player.hotbar.HotBar;
 import net.hyper.mc.spigot.player.hotbar.HotBarConfig;
 import net.hyper.mc.spigot.player.party.Party;
@@ -1134,6 +1135,7 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public void openLobbiesMenu(String type);
     public void openPartyMenu();
     public WorldLobby getLobby();
+    public void openConfirmMenu(ConfirmModel YES, ConfirmModel NO);
 
     // Spigot start
     public class Spigot extends Entity.Spigot

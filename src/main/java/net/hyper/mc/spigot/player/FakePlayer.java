@@ -1,6 +1,7 @@
 package net.hyper.mc.spigot.player;
 
 import net.hyper.mc.spigot.lobbies.WorldLobby;
+import net.hyper.mc.spigot.model.ConfirmModel;
 import net.hyper.mc.spigot.player.hotbar.HotBar;
 import net.hyper.mc.spigot.player.hotbar.HotBarConfig;
 import net.hyper.mc.spigot.player.party.Party;
@@ -175,6 +176,11 @@ public class FakePlayer implements Player {
     @Override
     public WorldLobby getLobby() {
         return null;
+    }
+
+    @Override
+    public void openConfirmMenu(ConfirmModel YES, ConfirmModel NO) {
+
     }
 
     @Override
