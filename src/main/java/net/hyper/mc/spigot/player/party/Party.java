@@ -15,7 +15,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Party {
 
     private Date createTime = new Date();
-    private String id = TokenCreator.createToken(4, 8);
+    private String id = TokenCreator.createToken(8, 16);
     private String name;
     private PartyPlayer owner;
     private int maxSize = 5;
@@ -50,6 +50,12 @@ public class Party {
         Calendar cl = Calendar.getInstance();
         cl.add(Calendar.MINUTE, 5);
         convites.put(target, cl.getTimeInMillis());
+    }
+
+    public void removeConvite(String target){
+        if(convites.containsKey(target)){
+            convites.remove(target);
+        }
     }
     public void addMember(PartyPlayer player){
         members.put(player, PartyRole.MEMBER);
