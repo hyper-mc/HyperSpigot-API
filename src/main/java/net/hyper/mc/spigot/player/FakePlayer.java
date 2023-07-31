@@ -157,7 +157,6 @@ public class FakePlayer implements Player {
 
     }
 
-
     @Override
     public void openServerMenu() {
 
@@ -181,6 +180,16 @@ public class FakePlayer implements Player {
     @Override
     public void openConfirmMenu(ConfirmModel YES, ConfirmModel NO) {
 
+    }
+
+    @Override
+    public boolean hasInjectableCompatibility() {
+        return false;
+    }
+
+    @Override
+    public boolean hasSupportedClient() {
+        return false;
     }
 
     @Override

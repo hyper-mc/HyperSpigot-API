@@ -1136,6 +1136,8 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public void openPartyMenu();
     public WorldLobby getLobby();
     public void openConfirmMenu(ConfirmModel YES, ConfirmModel NO);
+    public boolean hasInjectableCompatibility();
+    public boolean hasSupportedClient();
 
     // Spigot start
     public class Spigot extends Entity.Spigot
